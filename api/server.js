@@ -6,7 +6,7 @@ var cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.static("public"));
-const YOUR_DOMAIN = "http://localhost:5173";
+const YOUR_DOMAIN = process.env.YOUR_DOMAIN;
 
 app.use(express.json());
 app.listen(3000, () => console.log("Running on port 3000"));
