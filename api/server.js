@@ -10,7 +10,9 @@ const YOUR_DOMAIN = process.env.YOUR_DOMAIN;
 
 app.use(express.json());
 app.listen(3000, () => console.log("Running on port 3000"));
-
+app.get("/", (req, res) => {
+  res.send("<h1>Hello, World!</h1>");
+});
 app.post("/api/checkout", async (req, res) => {
   const items = req.body.items; // [{ id, quantity }]
 
