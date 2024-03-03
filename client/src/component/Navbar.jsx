@@ -4,7 +4,6 @@ import UpdateCartButton from "./UpdateCartButton";
 
 const Navbar = () => {
   const { cart, getCartTotal } = useCartContext();
-
   const [showCart, setShowCart] = useState(false);
   const handlePayment = async () => {
     let itemList = [];

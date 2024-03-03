@@ -13,6 +13,12 @@ app.listen(3000, () => console.log("Running on port 3000"));
 app.get("/api/test", (req, res) => {
   res.send("hello");
 });
+app.get("/success", (req, res) => {
+  res.send("payment was successful");
+});
+app.get("/cancel", (req, res) => {
+  res.send("payment was cancelled");
+});
 app.post("/api/checkout", async (req, res) => {
   const items = req.body.items; // [{ id, quantity }]
 
@@ -29,8 +35,8 @@ app.post("/api/checkout", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: lineItems,
       mode: "payment",
-      success_url: `${YOUR_DOMAIN}/success`,
-      cancel_url: `${YOUR_DOMAIN}/cancel`,
+      success_url: "http://localhost:3000/success",
+      cancel_url: "http://localhost:3000/cancel",
     });
 
     res.send(
